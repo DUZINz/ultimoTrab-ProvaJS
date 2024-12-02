@@ -10,8 +10,10 @@ const ProductComponent = () => {
   });
 
   useEffect(() => {
-    // Carregar produtos do backend
-    axios.get('/api/products')
+    const token = localStorage.getItem('token');
+    axios.get('/api/products', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
       .then(response => setProducts(response.data))
       .catch(error => console.error('Erro ao carregar produtos:', error));
   }, []);
@@ -23,8 +25,10 @@ const ProductComponent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Enviar novo produto para o backend
-    axios.post('/api/products', formData)
+    const token = localStorage.getItem('token');
+    axios.post('/api/products', formData, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
       .then(response => {
         setProducts([...products, response.data]);
         setFormData({ name: '', price: '', description: '' });

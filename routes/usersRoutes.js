@@ -43,5 +43,8 @@ router.get('/getUserById', async (req,res)=>{
 });
 
 router.post('/register', userController.createUser);
+router.post('/forgot', userController.forgotPassword);
+router.post('/reset/:token', userController.resetPassword);
+
 
 module.exports = router;

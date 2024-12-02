@@ -6,14 +6,28 @@ const RegisterComponent = () => {
     username: '',
     password: ''
   });
+  const [errors, setErrors] = useState({});
+
+  const validateForm = (formData) => {
+    const errors = {};
+    if (!formData.username) errors.username = 'Nome de usuário é obrigatório';
+    if (!formData.password) errors.password = 'Senha é obrigatória';
+    return errors;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    setErrors({});
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formErrors = validateForm(formData);
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
+    }
     axios.post('/api/users/register', formData)
       .then(response => {
         alert('Usuário registrado com sucesso!');
@@ -34,6 +48,7 @@ const RegisterComponent = () => {
           placeholder="Nome de usuário"
           required
         />
+        {errors.username && <span>{errors.username}</span>}
         <input
           type="password"
           name="password"
@@ -42,6 +57,7 @@ const RegisterComponent = () => {
           placeholder="Senha"
           required
         />
+        {errors.password && <span>{errors.password}</span>}
         <button type="submit">Registrar</button>
       </form>
     </div>
