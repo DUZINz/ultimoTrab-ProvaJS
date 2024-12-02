@@ -1,7 +1,8 @@
 import './App.css';
 import React from 'react';
 import ProductComponent from './components/productComponent';
-import LoginComponent from './components/loginComponent'; // Adicione esta linha
+import LoginComponent from './components/loginComponent'; 
+import RegisterComponent from './components/registerComponent';
 
 function App() {
   return (
