@@ -1,0 +1,25 @@
+{
+   "mysqlOptions": { "authProtocol": "default",
+    "enableSsl": "Disabled" },
+  "development": {
+    "username": "root",
+    "password": "140124",
+    "database": "projetob1",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "140124",
+    "database": "projetob1",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "140124",
+    "database": "projetob1",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
